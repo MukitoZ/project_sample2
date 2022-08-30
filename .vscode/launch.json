@@ -8,21 +8,21 @@
             "name": "project_sample2",
             "request": "launch",
             "type": "dart",
-            "program": "lib/login_screen.dart"
+            "program": "lib/splash_screen.dart"
         },
         {
             "name": "project_sample2 (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "program": "lib/login_screen.dart"
+            "program": "lib/splash_screen.dart"
         },
         {
             "name": "project_sample2 (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/login_screen.dart"
+            "program": "lib/splash_screen.dart"
         }
     ]
 }
