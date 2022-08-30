@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:project_sample2/login_screen.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -25,6 +27,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   late bool loading;
 
   // void validation() {
+  //   RegExp regExpUpperCase = RegExp("?=.*[A-Z]");
+  //   RegExp regExpLowerCase = RegExp("(?=.*[a-z]");
+  //   RegExp regExpDigit = RegExp("?=.*?[0-9]");
+
   //   Visibility(
   //     child: const Text(
   //       "Password must contain: ",
@@ -280,36 +286,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "Password must contain: ",
-            style: TextStyle(
-              fontSize: 10,
-            ),
+          FlutterPwValidator(
+            normalCharCount: 1,
+            width: 300,
+            height: 150,
+            minLength: 10,
+            uppercaseCharCount: 1,
+            numericCharCount: 1,
+            specialCharCount: 1,
+            onSuccess: () {},
+            controller: passwordController,
           ),
-          const Text(
-            "  1 lower case letter [a-z]",
-            style: TextStyle(
-              fontSize: 10,
-            ),
-          ),
-          const Text(
-            "  1 upper case letter [A-Z]",
-            style: TextStyle(
-              fontSize: 10,
-            ),
-          ),
-          const Text(
-            "  1 numeric character [0-9]",
-            style: TextStyle(
-              fontSize: 10,
-            ),
-          ),
-          const Text(
-            "  at least 10 characters in length",
-            style: TextStyle(
-              fontSize: 10,
-            ),
-          ),
+          // const Text(
+          //   "Password must contain: ",
+          //   style: TextStyle(
+          //     fontSize: 10,
+          //   ),
+          // ),
+          // const Text(
+          //   "  1 lower case letter [a-z]",
+          //   style: TextStyle(
+          //     fontSize: 10,
+          //   ),
+          // ),
+          // const Text(
+          //   "  1 upper case letter [A-Z]",
+          //   style: TextStyle(
+          //     fontSize: 10,
+          //   ),
+          // ),
+          // const Text(
+          //   "  1 numeric character [0-9]",
+          //   style: TextStyle(
+          //     fontSize: 10,
+          //   ),
+          // ),
+          // const Text(
+          //   "  at least 10 characters in length",
+          //   style: TextStyle(
+          //     fontSize: 10,
+          //   ),
+          // ),
           const SizedBox(
             height: 20,
           ),
@@ -360,6 +377,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
             onPressed: () {
               print("Submit Button Has Been Clicked");
               onLoading();
+              Timer(
+                Duration(seconds: 3),
+                (() => ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Register Successful"),
+                      ),
+                    )),
+              );
             },
             style: ElevatedButton.styleFrom(
               primary: Color.fromARGB(255, 183, 28, 28),
