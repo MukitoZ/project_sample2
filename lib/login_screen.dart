@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:project_sample2/bottom_navigation.dart';
+import 'package:project_sample2/home_screen.dart';
 import 'package:project_sample2/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -126,6 +128,11 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               onPressed: () {
                 print("Log In Button Has Been Clicked");
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const BottomNavigationScreen())),
+                    (route) => false);
               },
               style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(255, 183, 28, 28),
@@ -171,7 +178,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               child: const Text(
                 "Register",
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             const SizedBox(
@@ -202,6 +212,7 @@ class _LoginScreenState extends State<LoginScreen> {
               label: const Text(
                 "Privacy Policy",
                 style: TextStyle(
+                  fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 88, 87, 87),
                 ),
               ),
@@ -235,6 +246,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: const Text(
                       "Feedback",
                       style: TextStyle(
+                        fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 155, 10, 0),
                       ),
                     ),
@@ -266,6 +278,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: const Text(
                       "Share",
                       style: TextStyle(
+                        fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 155, 10, 0),
                       ),
                     ),

@@ -26,21 +26,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   late bool confirmPasswordVisible;
   late bool loading;
 
-  // void validation() {
-  //   RegExp regExpUpperCase = RegExp("?=.*[A-Z]");
-  //   RegExp regExpLowerCase = RegExp("(?=.*[a-z]");
-  //   RegExp regExpDigit = RegExp("?=.*?[0-9]");
-
-  //   Visibility(
-  //     child: const Text(
-  //       "Password must contain: ",
-  //       style: TextStyle(
-  //         fontSize: 10,
-  //       ),
-  //     ),
-  //   );
-  // }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -69,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     var loadingBody = Container(
-      margin: EdgeInsets.only(top: 300),
+      margin: const EdgeInsets.only(top: 300),
       child: Expanded(
         child: Center(
           child: LoadingAnimationWidget.discreteCircle(
@@ -81,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
 
     var body = Container(
-      margin: EdgeInsets.all(16),
+      margin: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -297,36 +282,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             onSuccess: () {},
             controller: passwordController,
           ),
-          // const Text(
-          //   "Password must contain: ",
-          //   style: TextStyle(
-          //     fontSize: 10,
-          //   ),
-          // ),
-          // const Text(
-          //   "  1 lower case letter [a-z]",
-          //   style: TextStyle(
-          //     fontSize: 10,
-          //   ),
-          // ),
-          // const Text(
-          //   "  1 upper case letter [A-Z]",
-          //   style: TextStyle(
-          //     fontSize: 10,
-          //   ),
-          // ),
-          // const Text(
-          //   "  1 numeric character [0-9]",
-          //   style: TextStyle(
-          //     fontSize: 10,
-          //   ),
-          // ),
-          // const Text(
-          //   "  at least 10 characters in length",
-          //   style: TextStyle(
-          //     fontSize: 10,
-          //   ),
-          // ),
           const SizedBox(
             height: 20,
           ),
@@ -400,7 +355,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            child: const Text("Submit"),
+            child: const Text(
+              "Submit",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
           const SizedBox(
             height: 10,
@@ -408,10 +368,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ElevatedButton(
             onPressed: () {
               print("Cancel Button Has Been Clicked");
-              Navigator.pop(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const LoginScreen())));
+              Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
               primary: const Color.fromARGB(255, 255, 164, 164),
@@ -430,6 +387,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: const Text(
               "Cancel",
               style: TextStyle(
+                fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 155, 10, 0),
               ),
             ),
@@ -441,6 +399,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Register"),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios_new),
+        ),
         backgroundColor: Colors.red[900],
       ),
       body: ListView(
